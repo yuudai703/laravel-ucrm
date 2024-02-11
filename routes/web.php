@@ -22,9 +22,16 @@ Route::get('/inertia-test', function () {
     }
 );
 
-Route::get('/inertia-test/index', [InertiaTestController::class,'index'])->name('inertia.index');
-Route::get('/inertia-test/show/{id}', [InertiaTestController::class,'show'])->name('inertia.show');
-Route::post('/inertia-test', [InertiaTestController::class,'store'])->name('inertia.store');
+Route::get('/component-test', function () {
+    return Inertia::render('ComponentTest');
+    }
+);
+
+Route::get('/inertia/index', [InertiaTestController::class,'index'])->name('inertia.index');
+Route::get('/inertia/create', [InertiaTestController::class,'create'])->name('inertia.create');
+Route::post('/inertia', [InertiaTestController::class,'store'])->name('inertia.store');
+Route::get('/inertia/show/{id}', [InertiaTestController::class,'show'])->name('inertia.show');
+Route::delete('/inertia/{id}', [InertiaTestController::class,'delete'])->name('inertia.delete');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
