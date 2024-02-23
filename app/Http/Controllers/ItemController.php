@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\item;
+use Inertia\Inertia;
 use App\Http\Requests\StoreitemRequest;
 use App\Http\Requests\UpdateitemRequest;
 
@@ -15,7 +16,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+
+        $items=Item::select('id','name','price','is_selling')->get();
+
+        return inertia::render('items/index',['items'=>$items]);
     }
 
     /**
